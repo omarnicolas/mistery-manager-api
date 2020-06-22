@@ -1,0 +1,46 @@
+{
+  "name": "mistery-manager-api",
+  "version": "1.0.0",
+  "description": "An API for mistery-manager",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server",
+    "start:dev": "nodemon server",
+    "lint": "standard --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omarnicolas/mistery-manager-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/omarnicolas/mistery-manager-api/issues"
+  },
+  "homepage": "https://github.com/omarnicolas/mistery-manager-api#readme",
+  "dependencies": {
+    "@mistery/auth": "file:packages/mistery-auth",
+    "@mistery/crypto": "file:packages/mistery-crypto",
+    "@mistery/db": "file:packages/mistery-db",
+    "@mistery/services": "file:packages/mistery-services",
+    "@plugins/authentication": "file:plugins/authentication",
+    "@routes/secrets": "file:routes/secrets",
+    "@routes/users": "file:routes/users",
+    "dotenv": "^8.2.0",
+    "fastify": "^2.15.0",
+    "fastify-helmet": "^3.0.2",
+    "pino-pretty": "^4.0.0"
+  },
+  "devDependencies": {
+    "fastify-cli": "^1.5.0",
+    "lerna": "^3.22.1",
+    "nodemon": "^2.0.4",
+    "standard": "^14.3.4"
+  },
+  "standard": {
+    "ignore": [
+      "**/node_modules/**"
+    ]
+  }
+}
