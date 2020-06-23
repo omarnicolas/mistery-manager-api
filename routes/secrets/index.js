@@ -22,15 +22,6 @@ async function secretRoutes (fastify, options) {
     required: ['username', 'name', 'value']
   })
   fastify.addSchema({
-    $id: 'deleteSecret',
-    type: 'object',
-    properties: {
-      username: { type: 'string' },
-      name: { type: 'string' }
-    },
-    required: ['username', 'name']
-  })
-  fastify.addSchema({
     $id: 'secrets',
     type: 'array',
     items: { $ref: 'publicSecret#' }
@@ -65,9 +56,6 @@ async function secretRoutes (fastify, options) {
 
   fastify.delete('/secrets/:username/:name', {
     preValidation: fastify.auth([fastify.validateJWT]),
-    schema: {
-      body: 'deleteSecret#'
-    }
   }, async (request, reply) => {
     const { username, name } = request.params
     await secretServices.deleteSecret(username, name)
@@ -77,7 +65,8 @@ async function secretRoutes (fastify, options) {
   fastify.get('/secrets/:username/:name', {
     preValidation: fastify.auth([fastify.validateJWT])
   }, async (request, reply) => {
-
+    const { username, name } = request.params
+    return secretServices.getSecret(username, name)
   })
 }
 
